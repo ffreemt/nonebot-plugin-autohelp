@@ -1,0 +1,27 @@
+{
+    "name": "nonebot_plugin_autohelp",
+    "version": "0.1.0",
+    "description": "description",
+    "main": "index.js",
+    "repository": "git@github.com:ffreemt/nonebot-plugin-autohelp.git",
+    "author": "ffreemt",
+    "license": "MIT",
+    "dependencies": {
+        "npm-run-all": "^4.1.5"
+    },
+    "scripts": {
+        "start": "pyright && pytest && yarn style",
+        "test": "nodemon -w tests -w nonebot_plugin_autohelp -x pytest tests",
+        "pyright": "nodemon -w nonebot_plugin_autohelp -w .venv -e .py -x pyright nonebot_plugin_autohelp tests",
+        "pytest": "nodemon -w tests -w nonebot_plugin_autohelp -e .py -x pytest tests nonebot_plugin_autohelp",
+        "style": "nodemon -w nonebot_plugin_autohelp -w tests -x \"black tests nonebot_plugin_autohelp && python -m flake8\"",
+        "docstyle": "nodemon -w nonebot_plugin_autohelp -w tests -x pydocstyle --convention=google tests nonebot_plugin_autohelp",
+        "pylint": "nodemon -w nonebot_plugin_autohelp -e .py -x pylint nonebot_plugin_autohelp",
+        "test:nonebot_plugin_autohelp": "nodemon -w tests -e .py -x pytest -k nonebot_plugin_autohelp tests",
+        "publish": "poetry build && poetry publish",
+        "black": "black tests nonebot_plugin_autohelp",
+        "flake8": "flake8 tests nonebot_plugin_autohelp",
+        "pep257": "pep257 tests nonebot_plugin_autohelp",
+        "final": "run-s pep257 black flake8 pytest"
+    }
+}

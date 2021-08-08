@@ -1,0 +1,37 @@
+"""Autogenerate response to commands /help !help help."""
+# pylint: disable=invalid-name
+import re
+from time import time
+import logzero
+from logzero import logger
+import nonebot
+from nonebot.adapters.cqhttp import Bot, Event
+
+# for ratelimit, will not respond twice within 30 seconds
+_vars = dict(last_sent=0, interval=30)
+
+logzero.loglevel(10)
+on_message = nonebot.on_message(priority=1)
+config = nonebot.Config()
+
+@on_message.handle()
+async def handle(bot: Bot, event: Event, state: dict):
+    """Handle messages."""
+    logger.debug(" nonebot_plugin_autohelp entry ")
+    if time() - _vars.get(last_sent) < _vars["interval"]:
+        return
+
+    msg = event.get_plaintext()
+    logger.debug("msg: %s", msg)
+
+    if re.findall(r"[/! ]*help", msg):
+        keys = ["nickname", "command_start", "command_sep",]
+        info = "\n".join(f"{key}: {', '.join(val)}" for key, val in nonebot.Config() if key in keys)
+        logger.debug("Respond... \n%s", info)
+        try:
+            await bot.send(message=f"{info}", event=event)
+
+            # reset timer if sent successfully
+            _var["last_sent"] = time()
+        except Exception as e:
+            logger.error(e)
