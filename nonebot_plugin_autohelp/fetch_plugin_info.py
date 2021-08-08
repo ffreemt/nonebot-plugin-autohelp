@@ -53,8 +53,8 @@ def extrac_info(file: Union[str, Path]) -> str:
 def fetch_aliases(mod: ModuleType, attach_doc: bool = False) -> str:
     """Fetch command and aliases if present.
 
-    >>> import nonebot_plugin_guess
-    >>> _fetch_aliases(nonebot_plugin_guess)
+    import nonebot_plugin_guess
+    _fetch_aliases(nonebot_plugin_guess)
     """
     if Path(mod.__file__).name in ["__init__.py"]:
         # is a package, search the folder for command/aliases info
