@@ -9,14 +9,14 @@ Show a summary of names, aliases and usages for plugins loaded
 ## Install it
 
 ```shell
-pip install nonebot_plugin_autohelp
-# or poetry add nonebot_plugin_autohelp
-# pip install git+htts://github.com/ffreemt/nonebot_plugin_autohelp
-# poetry add git+htts://github.com/ffreemt/nonebot_plugin_autohelp
+pip install nonebot-plugin-autohelp
+# or poetry add nonebot-plugin-autohelp
+# pip install git+htts://github.com/ffreemt/nonebot-plugin-autohelp
+# poetry add git+htts://github.com/ffreemt/nonebot-plugin-autohelp
 
 # To upgrade
-pip install nonebot_plugin_autohelp -U
-# or poetry add nonebot_plugin_autohelp@latest
+pip install nonebot-plugin-autohelp -U
+# or poetry add nonebot-plugin-autohelp@latest
 ```
 
 ## Use it
