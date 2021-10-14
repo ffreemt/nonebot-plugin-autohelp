@@ -1,4 +1,5 @@
 """Autogenerate response to commands /help !help help.
+/help details: also print __doc__
 
 For more info on usage:
 /help -h
@@ -25,7 +26,7 @@ patt = re.compile(r"^[/!#]?\s*(?:help|menu|帮助|菜单|caidan|info)|[/#]i", re
 logzero.loglevel(10)
 
 # on_message = nonebot.on_message(priority=1)
-nonebot_plugin_autohelp = nonebot.on_message(priority=1)
+nonebot_plugin_autohelp = nonebot.on_message(priority=1, block=False)
 
 config = nonebot.Config()
 
@@ -52,7 +53,7 @@ async def handle(bot: Bot, event: Event, state: dict):
     logger.debug(" nonebot_plugin_autohelp entry ")
     logger.debug("state: %s", state)
 
-    _ = time() - _vars.get("last_sent")
+    _ = time() - _vars.get("last_sent", 0)
     logger.debug("check time interval: %.1f", _)
     if _ < _vars["interval"]:
         logger.debug("Too soon... return ...")
@@ -72,7 +73,7 @@ async def handle(bot: Bot, event: Event, state: dict):
     )
     parser.add_argument("params", nargs="*", help="list of parameters of type str")
 
-    command = str(event.message).strip()
+    command = str(event.get_message()).strip()
     logger.debug("command (str(event.message).strip()): %s", command)
 
     args, stdout, stderr = parse_cmd(command, parser)
@@ -97,7 +98,12 @@ async def handle(bot: Bot, event: Event, state: dict):
     # args.params contains "details" or "detail" or "详细"
     det = any(map(lambda x: x in args.params, ["details", "detail", "详细"]))
 
-    if args.details or det:
+    try:
+        args_details = args.details
+    except AttributeError:
+        args_details = False
+
+    if args_details or det:
         try:
             plugin_info = fetch_plugin_info(details=True)
         except Exception as e:

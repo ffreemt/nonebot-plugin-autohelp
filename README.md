@@ -76,7 +76,7 @@ optional arguments:
 ---
 
 mu (μ)(41947782)  11:23:34 AM
-help --details
+help --details  # or help details
 ...(attach __doc___ for each plugin, ommitted)
 ```
 

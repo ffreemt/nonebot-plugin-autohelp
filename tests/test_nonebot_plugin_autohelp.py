@@ -1,14 +1,14 @@
 """Test nonebot_plugin_autohelp."""
 import nonebot
-from nonebot_plugin_autohelp import __version__
-# from nonebot_plugin_autohelp import nonebot_plugin_autohelp
-
 nonebot.init()
+
+# pylint: disable=wrong-import-position
+from nonebot_plugin_autohelp import __version__, nonebot_plugin_autohelp  # noqa
 
 
 def test_version():
     """Test version."""
-    assert __version__ == "0.1.0"
+    assert __version__[:3] == "0.1"
 
 
 def test_sanity():

@@ -1,5 +1,5 @@
 """Parse command according to a given argparse.ArgumentParser."""
-from typing import Optional, Tuple
+from typing import Tuple
 
 from argparse import ArgumentParser, Namespace, ArgumentDefaultsHelpFormatter
 import shlex
@@ -11,7 +11,7 @@ from logzero import logger
 
 def parse_cmd(
     command: str, parser: ArgumentParser = None
-) -> Tuple[Optional[Namespace], str, str]:
+) -> Tuple[Namespace, str, str]:
     """Parse command a given argparse.ArgumentParser.
 
     Args
@@ -32,7 +32,8 @@ def parse_cmd(
     # capture stderr
     stderr = StringIO()
     stdout = StringIO()
-    args: Optional[Namespace] = None
+    # args: Optional[Namespace] = None
+    args = parser.parse_args([])
     with redirect_stderr(stderr), redirect_stdout(stdout):
         # catch SystemExit
         try:
