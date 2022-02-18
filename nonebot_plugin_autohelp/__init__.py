@@ -3,7 +3,7 @@
 For more info on usage:
 /help -h
 """
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 from .nonebot_plugin_autohelp import nonebot_plugin_autohelp
 
 __all__ = ("nonebot_plugin_autohelp",)
