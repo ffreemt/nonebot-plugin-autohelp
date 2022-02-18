@@ -1,4 +1,6 @@
 """Parse command according to a given argparse.ArgumentParser."""
+# pylint: disable=invalid-name
+
 from typing import Tuple
 
 from argparse import ArgumentParser, Namespace, ArgumentDefaultsHelpFormatter

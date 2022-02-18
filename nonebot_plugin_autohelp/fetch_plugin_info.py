@@ -18,7 +18,7 @@ def extrac_info(file: Union[str, Path]) -> str:
     """Extract command/aliases info for a given a file."""
     if not Path(file).is_file():
         logger.warning(" file [%s] does not exist or is not a file.", file)
-        raise Exception(" file [%s] does not exist or is not a file." % file)
+        raise Exception(f" file [{file}] does not exist or is not a file.")
 
     try:
         text = Path(file).read_text(encoding="utf8")

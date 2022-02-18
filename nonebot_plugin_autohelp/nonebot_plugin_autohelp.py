@@ -4,10 +4,8 @@
 For more info on usage:
 /help -h
 """
-# pylint: disable=invalid-name
+# pylint: disable=invalid-name, too-many-statements, no-name-in-module, too-many-locals
 # import asyncio
-
-from nonebot.typing import T_State
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
@@ -17,6 +15,8 @@ import logzero
 from logzero import logger
 
 import nonebot
+from nonebot.typing import T_State
+from nonebot.params import State
 
 # from nonebot.adapters.cqhttp import Bot, Event
 from nonebot.adapters.onebot.v11 import Bot, Event
@@ -54,7 +54,7 @@ logger.info("Loaded plugins: %s", [elm.name for elm in nonebot.get_loaded_plugin
 
 @nonebot_plugin_autohelp.handle()
 # async def handle(bot: Bot, event: Event, state: dict):
-async def handle(bot: Bot, event: Event, state: T_State):
+async def handle(bot: Bot, event: Event, state: T_State = State()):
     """Handle messages."""
     logger.debug(" nonebot_plugin_autohelp entry ")
     logger.debug("state: %s", state)
