@@ -1,6 +1,6 @@
 {
     "name": "nonebot_plugin_autohelp",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "description",
     "main": "index.js",
     "repository": "git@github.com:ffreemt/nonebot-plugin-autohelp.git",

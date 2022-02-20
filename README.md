@@ -1,10 +1,10 @@
 # nonebot-plugin-autohelp
-[![tests](https://github.com/ffreemt/nonebot-plugin-autohelp/actions/workflows/routine-tests.yml/badge.svg)](https://github.com/ffreemt/nonebot-plugin-autohelp/actions)[![nonebot2](https://img.shields.io/static/v1?label=nonebot&message=v2&color=green)](https://v2.nonebot.dev/)[![cqhttp](https://img.shields.io/static/v1?label=driver&message=cqhttp&color=green)](https://v2.nonebot.dev/guide/cqhttp-guide.html)[![python](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![PyPI version](https://badge.fury.io/py/nonebot_plugin_autohelp.svg)](https://badge.fury.io/py/nonebot_plugin_autohelp)
+[![nonebot2beta](https://img.shields.io/static/v1?label=nonebot&message=v2b2&color=green)](https://v2.nonebot.dev/)[![onebot](https://img.shields.io/static/v1?label=driver&message=onebot&color=green)](https://adapter-onebot.netlify.app/)[![python](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)](https://img.shields.io/static/v1?label=python+&message=3.7%2B&color=blue)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)[![PyPI version](https://badge.fury.io/py/nonebot_plugin_autohelp.svg)](https://badge.fury.io/py/nonebot_plugin_autohelp)
 
 Show a summary of commands, aliases and usages for plugins loaded
 
 ## Dependent adapter
-`cqhttp`
+`onebotv11`
 
 ## Install it
 
@@ -23,14 +23,15 @@ pip install nonebot-plugin-autohelp -U
 ```python
 # bot.py
 import nonebot
+from nonebot.adapters.onebot.v11 import Adapter
 ...
 nonebot.init()
 
 driver = nonebot.get_driver()
-
-driver.register_adapter("cqhttp", CQHTTPBot)
+driver.register_adapter(Adapter)
 
 nonebot.load_from_toml("pyproject.toml")
+nonebot.load_builtin_plugin("echo")
 nonebot.load_plugin("nonebot_plugin_guess")
 
 nonebot.load_plugin("nonebot_plugin_autohelp")
@@ -61,6 +62,8 @@ command: debug test: %s
 
 command: guess
 	aliases: cai, 猜猜看, 猜
+
+(help -d will display detailed docs for all plugins loaded before nonebot_plugin_autohelp)
 
 mu (μ)(41947782)  11:53:25 AM
 help -h

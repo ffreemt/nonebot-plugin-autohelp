@@ -74,7 +74,10 @@ async def handle(bot: Bot, event: Event, state: T_State = State()):
         logger.debug("patt.findall(msg) False, return...")
         return
 
-    parser = ArgumentParser(prog="help", formatter_class=ArgumentDefaultsHelpFormatter,)
+    parser = ArgumentParser(
+        prog="help",
+        formatter_class=ArgumentDefaultsHelpFormatter,
+    )
     parser.add_argument(
         "-d", "--details", action="store_true", help="show __doc__ for each plugin"
     )
@@ -132,7 +135,7 @@ async def handle(bot: Bot, event: Event, state: T_State = State()):
         try:
             await bot.send(
                 message=f"{info}\n{plugin_info}\n(help -d will display detailed docs for all plugins loaded before nonebot_plugin_autohelp)",
-                event=event
+                event=event,
             )
 
             # reset timer if sent successfully
