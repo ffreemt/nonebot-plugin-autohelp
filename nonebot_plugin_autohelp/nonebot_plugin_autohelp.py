@@ -24,10 +24,11 @@ from nonebot.adapters.onebot.v11 import Bot, Event
 from .parse_cmd import parse_cmd
 from .fetch_plugin_info import fetch_plugin_info
 
-# for ratelimit, will not respond twice within 30 seconds
-_vars = dict(last_sent=0.0, interval=30)
+# for ratelimit, will not respond twice within 3 seconds
+_vars = dict(last_sent=0.0, interval=3)
 patt = re.compile(r"^[/!#]?\s*(?:help|menu|帮助|菜单|caidan|info)|[/#]i", re.I)
 
+# logzero.loglevel(20) to disable noisy debug messages
 logzero.loglevel(10)
 
 # on_message = nonebot.on_message(priority=1)
@@ -129,7 +130,10 @@ async def handle(bot: Bot, event: Event, state: T_State = State()):
             logger.error("fetch_plugin_info() exc: %s", e)
             plugin_info = str(e)
         try:
-            await bot.send(message=f"{info}\n{plugin_info}", event=event)
+            await bot.send(
+                message=f"{info}\n{plugin_info}\n(help -d will display detailed docs for all plugins loaded before nonebot_plugin_autohelp)",
+                event=event
+            )
 
             # reset timer if sent successfully
             _vars["last_sent"] = time()
