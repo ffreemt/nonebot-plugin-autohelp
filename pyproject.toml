@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nonebot-plugin-autohelp"
-version = "0.1.4"
-description = "nonebot2 plugin 自动生成帮助相应/help  /菜单"
+version = "0.1.5"
+description = "nonebot2 plugin 自动生成载入插件的帮助信息，响应 /help !help help 菜单 caidan /i"
 authors = ["ffreemt"]
 license = "MIT"
 readme = "README.md"
