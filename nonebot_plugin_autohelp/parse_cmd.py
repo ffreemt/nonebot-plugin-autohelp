@@ -39,7 +39,8 @@ def parse_cmd(
     with redirect_stderr(stderr), redirect_stdout(stdout):
         # catch SystemExit
         try:
-            args = parser.parse_args(shlex.split(command))
+            # ignore the first entry that's prg, just need args
+            args = parser.parse_args(shlex.split(command)[1:])
         except SystemExit:
             logger.error("SystemExit caught.")
         except BaseException as e:

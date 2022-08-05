@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "nonebot_plugin_autohelp"
-version = "0.1.3"
-description = "pack_name descr "
+name = "nonebot-plugin-autohelp"
+version = "0.1.4"
+description = "nonebot2 plugin 自动生成帮助相应/help  /菜单"
 authors = ["ffreemt"]
 license = "MIT"
 readme = "README.md"
