@@ -16,7 +16,7 @@ from logzero import logger
 
 import nonebot
 from nonebot.typing import T_State
-from nonebot.params import State
+# from nonebot.params import State
 
 # from nonebot.adapters.cqhttp import Bot, Event
 from nonebot.adapters.onebot.v11 import Bot, Event
@@ -55,7 +55,8 @@ logger.info("Loaded plugins: %s", [elm.name for elm in nonebot.get_loaded_plugin
 
 @nonebot_plugin_autohelp.handle()
 # async def handle(bot: Bot, event: Event, state: dict):
-async def handle(bot: Bot, event: Event, state: T_State = State()):
+# async def handle(bot: Bot, event: Event, state: T_State = State()):
+async def handle(bot: Bot, event: Event, state: T_State):
     """Handle messages."""
     logger.debug(" nonebot_plugin_autohelp entry ")
     logger.debug("state: %s", state)
