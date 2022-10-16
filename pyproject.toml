@@ -9,7 +9,7 @@ repository = "https://github.com/ffreemt/nonebot-plugin-autohelp"
 include = ["LICENSE"]
 
 [tool.poetry.dependencies]
-python = "^3.7.3"
+python = "^3.8.0"
 # python = "^3.6.7"
 logzero = "^1.7.0"
 nonebot2 = "^2.0.0-alpha.16"
